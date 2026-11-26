@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PENAJI — PENampungan Aspirasi HMJTI | Politeknik Negeri Jember</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/penaji.css" />
+  <meta name="theme-color" content="#0A2647" />
+</head>
+<body>
+
+  <!-- =========================================================
+       VIEW 1: PUBLIC LANDING PAGE
+  ========================================================== -->
+  <div id="publicView" class="view-container">
+
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<header class="topnav" id="topnav">
+  <div class="container tn-in">
+    <a href="#beranda" class="tn-brand" aria-label="Beranda PENAJI"><img src="assets/logo-penaji.png" alt="Logo PENAJI" /></a>
+    <nav class="tn-links" id="navMenu" aria-label="Navigasi utama">
+      <a class="tl active" href="#beranda">Beranda</a>
+      <a class="tl" href="#progres">Progres Aspirasi</a>
+      <a class="tl" href="#galeri">Galeri</a>
+      <a class="tl" href="#aspirasi">Layanan Aspirasi</a>
+      <a class="tl" href="#profil">Tentang HMJTI</a>
+    </nav>
+    <button type="button" class="tn-burger" id="mobileMenuBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section id="beranda" class="hero">
+  <div class="container hero-grid">
+    <div class="hero-left" id="heroLeft">
+      <span class="pill reveal"><i class="pulse"></i>Platform Resmi Aspirasi Mahasiswa JTI Polije</span>
+      <h1 class="reveal">Suarakan Aspirasimu, Wujudkan Perubahan Nyata di <em>JTI Polije</em></h1>
+      <p class="lead reveal"><strong>PENAJI (PENampungan Aspirasi HMJTI)</strong> adalah portal resmi Himpunan Mahasiswa Jurusan Teknologi Informasi Politeknik Negeri Jember untuk menampung saran, kritik, dan usulan secara terstruktur.</p>
+      <div class="hero-cta reveal">
+        <a href="#aspirasi" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Kirim Aspirasi Sekarang
+        </a>
+        <a href="#progres" class="btn btn-glass btn-lg">Lihat Progres Aspirasi</a>
+      </div>
+    </div>
+    <div class="reveal" style="--i:2">
+      <aside class="hl float f3">
+        <div class="hl-h"><h3>Highlight Kegiatan Terbaru</h3><a href="#progres">Lihat semua</a></div>
+        <div id="hlList"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="progres" class="sx b1">
+  <div class="container">
+    <div class="sh reveal">
+      <h2>Progres Aspirasi Mahasiswa</h2>
+      <p>Setiap aspirasi yang masuk dicatat di sini. Nama pengirim disamarkan dan NIM tidak ditampilkan. Pantau apakah aspirasi sudah diterima, diproses, atau selesai.</p>
+    </div>
+    <div class="fps reveal" id="progresFilters" role="group" aria-label="Filter status aspirasi">
+      <button type="button" class="fp active" data-f="all">Semua</button>
+      <button type="button" class="fp" data-f="Menunggu">Diterima</button>
+      <button type="button" class="fp" data-f="Diproses">Diproses</button>
+      <button type="button" class="fp" data-f="Selesai">Selesai</button>
+    </div>
+    <div class="pg" id="progresGrid"></div>
+  </div>
+</section>
+
+<section id="galeri" class="sx b2">
+  <div class="container">
+    <div class="sh reveal">
+      <h2>Galeri Dokumentasi Kegiatan</h2>
+      <p>Geser untuk melihat dokumentasi kegiatan HMJTI. Ketuk foto untuk memperbesar.</p>
+    </div>
+    <div class="car reveal">
+      <div class="track" id="galTrack" tabindex="0" aria-label="Galeri foto kegiatan"></div>
+      <div class="car-ctl">
+        <button type="button" class="car-btn" id="galPrev" aria-label="Foto sebelumnya"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button type="button" class="car-btn" id="galNext" aria-label="Foto berikutnya"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="aspirasi" class="sx b3">
+  <div class="container">
+    <div class="sh reveal">
+      <h2>Sampaikan Aspirasimu untuk JTI</h2>
+      <p>Tulis dengan jelas dan konstruktif. Aspirasi yang masuk akan dibaca pengurus HMJTI, lalu progresnya tampil di bagian Progres Aspirasi.</p>
+    </div>
+    <div class="asp-grid">
+      <div class="asp-side">
+        <div class="card reveal" style="--i:0">
+          <h3>Alur penyampaian</h3>
+          <ol class="steps">
+            <li><b>1</b><div><strong>Isi identitas dan pilih kategori</strong><p>Nama dan NIM boleh dikosongkan bila kamu memilih anonim.</p></div></li>
+            <li><b>2</b><div><strong>Tulis aspirasi dengan jelas</strong><p>Sebutkan lokasi, mata kuliah, atau usulan solusi agar mudah ditindaklanjuti.</p></div></li>
+            <li><b>3</b><div><strong>Kirim dan pantau progresnya</strong><p>Aspirasimu langsung muncul di bagian Progres Aspirasi dengan status Diterima.</p></div></li>
+          </ol>
+        </div>
+        <div class="card reveal" style="--i:1">
+          <h3>Kategori yang ditampung</h3>
+          <div class="chips"><span>Akademik &amp; Perkuliahan</span><span>Sarana &amp; Prasarana JTI</span><span>Program Kerja HMJTI</span><span>Layanan Kemahasiswaan</span></div>
+        </div>
+      </div>
+
+      <div class="card form-card reveal" style="--i:1">
+        <div class="fc-head">
+          <div><h3>Formulir Aspirasi Mahasiswa</h3><p>Kolom bertanda <span class="req">*</span> wajib diisi</p></div>
+          <label class="anon-switch"><input type="checkbox" id="anonToggle" /><span class="anon-slider"></span><span class="anon-text">Kirim sebagai Anonim</span></label>
+        </div>
+        <form id="aspirasiForm" novalidate>
+          <div class="form-group">
+            <label for="inputNama" class="form-label">Nama Lengkap <span class="opt-tag">(Opsional)</span></label>
+            <input type="text" id="inputNama" class="form-control" placeholder="Contoh: Alfan Rizqy Prasetyo" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="inputNim" class="form-label">NIM <span class="opt-tag">(Opsional)</span></label>
+            <input type="text" id="inputNim" class="form-control" placeholder="Contoh: E41261512" maxlength="12" autocomplete="off" />
+            <span class="error-msg" id="errNim"></span>
+          </div>
+          <div class="row2">
+            <div class="form-group">
+              <label for="selectProdi" class="form-label">Program Studi <span class="req">*</span></label>
+              <select id="selectProdi" class="form-control" required>
+                <option value="">Pilih program studi</option>
+                <option>D-IV Teknik Informatika</option><option>D-III Manajemen Informatika</option><option>D-IV Teknik Komputer</option><option>D-IV Bisnis Digital</option>
+              </select>
+              <span class="error-msg" id="errProdi"></span>
+            </div>
+            <div class="form-group">
+              <label for="selectKategori" class="form-label">Kategori Aspirasi <span class="req">*</span></label>
+              <select id="selectKategori" class="form-control" required>
+                <option value="">Pilih kategori</option>
+                <option value="Akademik &amp; Perkuliahan">Akademik &amp; Perkuliahan</option><option value="Sarana &amp; Prasarana JTI">Sarana &amp; Prasarana JTI</option><option value="Program Kerja HMJTI">Program Kerja HMJTI</option><option value="Layanan Kemahasiswaan">Layanan Kemahasiswaan</option>
+              </select>
+              <span class="error-msg" id="errKategori"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="lb-between"><label for="textareaAspirasi" class="form-label">Isi Aspirasi <span class="req">*</span></label><span class="char-counter" id="charCounter">0 / 500 karakter</span></div>
+            <textarea id="textareaAspirasi" class="form-control" rows="5" maxlength="500" placeholder="Tuliskan keluhan, saran perbaikan fasilitas, atau usulan program kerja HMJTI..." required></textarea>
+            <span class="error-msg" id="errAspirasi"></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Kirim Aspirasi
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="profil" class="sx b4">
+  <div class="container">
+    <div class="sh reveal">
+      <h2>Tentang HMJTI</h2>
+      <p>“Bersinergi Dari Hati, Berdedikasi untuk TI.” Kenali tim yang membaca dan menindaklanjuti aspirasimu.</p>
+    </div>
+    <div class="vm">
+      <div class="vcard reveal" style="--i:0">
+        <h3>Visi</h3>
+        <p>Membangun HMJ TI Politeknik Negeri Jember yang berlandaskan semangat kekeluargaan dan kolaborasi, berorientasi pada pengembangan potensi dan karakter mahasiswa Teknologi Informasi, sebagai ruang tumbuh bersama untuk melahirkan inovasi, karya, dan kontribusi nyata bagi kampus maupun masyarakat.</p>
+      </div>
+      <div class="card reveal" style="--i:1">
+        <h3>Misi</h3>
+        <ol class="misi">
+          <li>Mengembangkan kapasitas dan karakter mahasiswa Teknologi Informasi melalui kegiatan yang berorientasi pada peningkatan soft skill, profesionalitas, dan tanggung jawab sosial dalam suasana kekeluargaan yang suportif dan inklusif.</li>
+          <li>Mewujudkan budaya kerja yang kolaboratif, adaptif, dan transparan dengan memperkuat sinergi antar-departemen dan hubungan eksternal, serta menjunjung nilai kekeluargaan dan solidaritas sebagai fondasi dalam mencapai kinerja organisasi yang efektif dan berorientasi hasil.</li>
+          <li>Mendorong mahasiswa Teknologi Informasi untuk berkontribusi aktif dalam pengabdian masyarakat, kewirausahaan, dan karya teknologi yang berdampak positif bagi lingkungan kampus maupun eksternal.</li>
+        </ol>
+      </div>
+    </div>
+    <h3 class="sub reveal">Badan Pengurus Harian</h3>
+    <div class="bph" id="bphGrid"></div>
+    <h3 class="sub reveal">Departemen</h3>
+    <div class="dep" id="depGrid"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+         BANNER PENUTUP / CTA DENGAN VISUAL GEDUNG JTI POLIJE (SOFT BLUR)
+    ========================================================== -->
+    <section class="cta-banner-section">
+      <div class="cta-bg-wrapper" aria-hidden="true">
+        <img src="assets/gedung-jti.jpg" alt="Gedung Jurusan Teknologi Informasi Politeknik Negeri Jember" class="cta-bg-blur-img" />
+        <div class="cta-bg-overlay"></div>
+      </div>
+
+      <div class="container cta-banner-inner">
+        <div class="cta-glass-box">
+          <div class="cta-logo-pill">
+            <img src="assets/logo-penaji.png" alt="Logo PENAJI" />
+          </div>
+          <h2>Bersama Membangun Jurusan Teknologi Informasi yang Lebih Baik</h2>
+          <p>
+            Setiap suara mahasiswa adalah langkah awal menuju peningkatan kualitas akademik, fasilitas laboratorium, dan kegiatan kemahasiswaan di Politeknik Negeri Jember.
+          </p>
+          <div class="cta-banner-buttons">
+            <a href="#aspirasi" class="btn btn-white btn-lg">Tulis Aspirasi Sekarang</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+    <footer class="site-footer no-print">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-wrap">
+            <img src="assets/logo-penaji.png" alt="Logo PENAJI HMJTI" />
+          </div>
+          <p>
+            <strong>PENAJI (PENampungan Aspirasi HMJTI)</strong> — Sistem layanan aspirasi dan informasi Himpunan Mahasiswa Jurusan Teknologi Informasi, Politeknik Negeri Jember.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigasi Cepat</h4>
+          <ul><li><a href="#beranda">Beranda</a></li><li><a href="#progres">Progres Aspirasi</a></li><li><a href="#galeri">Galeri Kegiatan</a></li><li><a href="#aspirasi">Layanan Aspirasi</a></li><li><a href="#profil">Tentang HMJTI</a></li></ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Sekretariat</h4>
+          <p>Gedung Jurusan Teknologi Informasi (JTI), Politeknik Negeri Jember, Jl. Mastrip PO Box 164, Jember.</p>
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="igG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".35" stop-color="#FA7E1E"/><stop offset=".6" stop-color="#D62976"/><stop offset=".8" stop-color="#962FBF"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs></svg><div class="kanal"><h5>Kanal Resmi HMJTI</h5><div class="kn-row"><a class="kn kn-tt" href="https://www.tiktok.com/@hmjtipolije" target="_blank" rel="noopener noreferrer" aria-label="TikTok HMJTI"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a><a class="kn kn-ig" href="https://www.instagram.com/hmjtipolije" target="_blank" rel="noopener noreferrer" aria-label="Instagram HMJTI"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.351-.2 6.78-2.618 6.98-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a class="kn kn-yt" href="https://www.youtube.com/@hmjtipolije" target="_blank" rel="noopener noreferrer" aria-label="YouTube HMJTI"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a class="kn kn-ml" href="mailto:hmjti@polije.ac.id" aria-label="Email HMJTI"><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg></a></div><a class="kn-mail" href="mailto:hmjti@polije.ac.id">hmjti@polije.ac.id</a></div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <span>&copy; 2026 PENAJI — HMJTI Politeknik Negeri Jember. Dirancang oleh Kelompok 5, D-IV Teknik Informatika.</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- =========================================================
+       MODAL 2: POP-UP NOTIFIKASI SUKSES ASPIRASI (F-07)
+  ========================================================== -->
+  <div class="modal-backdrop hidden no-print" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successModalTitle">
+    <div class="modal-card success-modal-card">
+      <div class="success-icon-ring">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span class="feature-badge" data-fid="F-07">F-07 • Notifikasi Sukses</span>
+      <h3 id="successModalTitle">Aspirasi Berhasil Terkirim!</h3>
+      <p>
+        Terima kasih atas partisipasi Anda. Aspirasi Anda telah tercatat di <strong>PENAJI HMJTI</strong> dan statusnya dapat dipantau di bagian Progres Aspirasi.</p>
+      <div class="success-modal-actions">
+        <button type="button" class="btn btn-primary" id="closeSuccessModalBtn">Selesai</button>
+        <button type="button" class="btn btn-glass" id="viewInAdminBtn">Lihat Progres Aspirasi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL 3: LIGHTBOX GALERI DOKUMENTASI (F-04)
+  ========================================================== -->
+  <div class="modal-backdrop hidden no-print" id="lightboxModal" role="dialog" aria-modal="true">
+    <div class="modal-card lightbox-card">
+      <button type="button" class="modal-close" id="closeLightboxBtn" aria-label="Tutup Pratinjau">&times;</button>
+      <img src="" alt="" id="lightboxImg" class="lightbox-img" />
+      <div class="lightbox-caption">
+        <h4 id="lightboxTitle"></h4>
+        <p id="lightboxDate"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
